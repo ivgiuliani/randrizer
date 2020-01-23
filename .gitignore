@@ -1,0 +1,12 @@
+.DS_Store
+
+.data/
+.bundle/
+log/
+tmp/
+.idea/
+
+.rspec_status
+
+.local_files
+Gemfile.lock

@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "properties": {
+    "resource": {
+      "description": "A type",
+      "type": "string",
+      "enum": ["type 1", "type 2"]
+    },
+    "amount": {
+      "description": "Amount in cents",
+      "type": "integer",
+      "min": 0
+    },
+    "the_date": {
+      "description": "Birthday",
+      "type": "string",
+      "format": "date"
+    },
+    "country": {
+      "description": "Country code",
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 2
+    }
+  },
+  "type": "object",
+  "required": [
+    "resource",
+    "amount",
+    "the_date",
+    "country"
+  ]
+}

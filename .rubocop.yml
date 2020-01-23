@@ -1,0 +1,107 @@
+require: rubocop-rspec
+
+AllCops:
+  TargetRubyVersion: 2.6.5
+  DisplayCopNames: true
+  DisplayStyleGuide: true
+  ExtraDetails: true
+  Exclude:
+    - .*/**/*
+    - vendor/**/*
+    - bin/**/*
+
+Lint/UnneededCopDisableDirective:
+  Severity: error
+
+Lint/AmbiguousBlockAssociation:
+  Exclude:
+    - "spec/**/*"
+
+Metrics/AbcSize:
+  Max: 59
+
+Metrics/CyclomaticComplexity:
+  Max: 10
+
+Metrics/PerceivedComplexity:
+  Max: 9
+
+Metrics/ClassLength:
+  Enabled: false
+
+Metrics/MethodLength:
+  Max: 58
+
+Metrics/LineLength:
+  Max: 90
+  Exclude:
+    - 'Gemfile'
+
+Metrics/BlockLength:
+  Enabled: false
+
+Metrics/ModuleLength:
+  Enabled: false
+
+Metrics/ParameterLists:
+  Max: 10
+  CountKeywordArgs: false
+
+Naming/FileName:
+  Exclude:
+    - 'Gemfile'
+
+Style/Documentation:
+  Enabled: false
+
+Style/StringLiterals:
+  EnforcedStyle: "double_quotes"
+  Exclude:
+    - Gemfile
+
+Layout/IndentFirstArrayElement:
+  EnforcedStyle: consistent
+
+Layout/IndentFirstHashElement:
+  EnforcedStyle: consistent
+
+Style/YodaCondition:
+  Enabled: true
+
+RSpec/ExampleLength:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Max: 10
+
+RSpec/NestedGroups:
+  Max: 8
+
+RSpec/ImplicitSubject:
+  Enabled: false
+
+RSpec/NamedSubject:
+  Enabled: false
+
+RSpec/LetSetup:
+  Enabled: false
+
+RSpec/ContextWording:
+  Prefixes:
+    - when
+    - with
+    - without
+    - if
+    - unless
+    - for
+    - and
+
+Naming/UncommunicativeMethodParamName:
+  AllowedNames:
+    # These are the default allowed names, set by Rubocop
+    - io
+    - id
+    # These are some custom names that we want to allow, since they aren't
+    # uncommunicative - they're actually rather meaningful!
+    - to
+    - "_"

@@ -1,0 +1,212 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "oneOf": [
+    {
+      "$ref": "#/definitions/person"
+    },
+    {
+      "$ref": "#/definitions/company"
+    }
+  ],
+  "properties": {
+    "resource": {
+      "description": "Resource to operate on",
+      "type": "string",
+      "enum": ["CREDIT"]
+    },
+    "action": {
+      "description": "CRUD action to perform on the given resource",
+      "type": "string",
+      "enum": ["CREATE"]
+    },
+    "amount": {
+      "description": "Amount in cents",
+      "type": "integer"
+    },
+    "currency": {
+      "description": "Currency to credit.",
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 3
+    },
+    "execution_date": {
+      "description": "Date on which to execute the transaction. This has to be the working day following the submission date.",
+      "type": "string",
+      "format": "date"
+    },
+    "submission_reference": {
+      "description": "A reference that identifies the submission file. This will be used as the reference for the offset transaction for that submission file.",
+      "type": "string",
+      "maxLength": 15
+    },
+    "internal_reference": {
+      "description": "An internal reference for the transaction. The customer will not see this.",
+      "type": "string",
+      "maxLength": 15
+    },
+    "entry_description": {
+      "description": "One of the two fields that will appear on the creditor's bank statement. For credit submissions, this will be the customer_reference, which we receive from Core Banking via the broker.",
+      "type": "string",
+      "maxLength": 10
+    },
+    "individual_identification": {
+      "description": "One of the two fields that will appear on the creditor's bank statement. for credit submissions, this will be the credit id. However, this may not appear on the statement depending on the bank.",
+      "type": "string",
+      "maxlength": 15
+    },
+    "creditor_street_name": {
+      "description": "First line of the personal / business address of the creditor",
+      "type": "string",
+      "maxLength": 35
+    },
+    "creditor_city": {
+      "description": "City of the personal / business address of the creditor",
+      "type": "string",
+      "maxLength": 30
+    },
+    "creditor_region": {
+      "description": "Region (State of a US) of the personal / business address of the creditor.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "maxLength": 2
+    },
+    "creditor_post_code": {
+      "description": "Postcode (Zip for the US) of the personal / business address of the creditor.",
+      "type": "string",
+      "maxLength": 30
+    },
+    "creditor_country": {
+      "description": "Country of the personal / business address of the creditor.",
+      "type": "string",
+      "maxLength": 2
+    },
+    "creditor_bank_country": {
+      "description": "The country the creditor's bank resides in",
+      "type": "string",
+      "maxLength": 2
+    },
+    "creditor_bank_name": {
+      "description": "The name of the creditor's bank",
+      "type": "string",
+      "maxLength": 35
+    },
+    "creditor_bank_account_type": {
+      "description": "Bank account type helps decide which transaction code to use in submissions",
+      "type": "string",
+      "enum": ["checking", "savings"]
+    },
+    "creditor_pseudo_iban": {
+      "description": "Pseudo IBAN for the creditor's account, which includes the routing number and the bank account number",
+      "type": "string"
+    },
+    "gocardless_pseudo_iban": {
+      "description": "Pseudo IBAN for the GoCardless account, which includes the routing number and the bank account number",
+      "type": "string"
+    },
+    "gocardless_company_id": {
+      "description": "The ACH company ID to use with this submission",
+      "type": "string",
+      "pattern": "[0-9]{10}"
+    },
+    "scheme_identifier_name": {
+      "description": "The name that appears on the customers bank statement as payee",
+      "type": "string"
+    },
+    "trace_id": {
+      "description": "Information related to a credit record to help troubleshoot failures (e.g. USACHCD-0000153EDHBK)",
+      "type": "string"
+    },
+    "submission_timestamp": {
+      "description": "The timestamp that will appear in the filename of the submission that is sent to the bank.",
+      "type": "string",
+      "format": "date-time"
+    },
+    "any_party_outside_us": {
+      "description": "Whether or not the ultimate payers / beneficiaries bank account are outside the US",
+      "type": "boolean"
+    },
+    "immediate_origin": {
+      "description": "An identifier to put in the `immediate_origin` field in the submission file, which is used by CFSB to process the file",
+      "type": "string",
+      "maxLength": 10
+    },
+    "immediate_destination": {
+      "description": "An identifier to put in the `immediate_destination` field in the submission file, which is used by CFSB to process the file",
+      "type": "string",
+      "maxLength": 10
+    }
+  },
+  "type": "object",
+  "required": [
+    "resource",
+    "action",
+    "amount",
+    "currency",
+    "execution_date",
+    "submission_reference",
+    "internal_reference",
+    "entry_description",
+    "individual_identification",
+    "creditor_street_name",
+    "creditor_city",
+    "creditor_region",
+    "creditor_post_code",
+    "creditor_bank_name",
+    "creditor_country",
+    "creditor_bank_country",
+    "creditor_pseudo_iban",
+    "gocardless_pseudo_iban",
+    "gocardless_company_id",
+    "scheme_identifier_name",
+    "trace_id",
+    "submission_timestamp",
+    "any_party_outside_us",
+    "immediate_origin",
+    "immediate_destination"
+  ],
+  "definitions": {
+    "person": {
+      "type": "object",
+      "properties": {
+        "creditor_type": {
+          "description": "Creditor type, either 'person' or 'company'",
+          "type": "string",
+          "enum": ["person"]
+        },
+        "creditor_first_name": {
+          "description": "Creditor's (individual) first name",
+          "type": "string"
+        },
+        "creditor_last_name": {
+          "description": "Creditor's (individual) last name",
+          "type": "string"
+        }
+      },
+      "required": [
+        "creditor_type",
+        "creditor_first_name",
+        "creditor_last_name"
+      ]
+    },
+    "company": {
+      "type": "object",
+      "properties": {
+        "creditor_type": {
+          "description": "Creditor type, either 'person' or 'company'",
+          "type": "string",
+          "enum": ["company"]
+        },
+        "creditor_company_name": {
+          "description": "Creditor's (company) name",
+          "type": "string"
+        }
+      },
+      "required": [
+        "creditor_type",
+        "creditor_company_name"
+      ]
+    }
+  }
+}
