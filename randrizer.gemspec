@@ -28,6 +28,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "pry-byebug", "~> 3.7.0"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.0"
+  spec.add_development_dependency "rspec_junit_formatter", "0.4.1"
   spec.add_development_dependency "rubocop", "~> 0.75.0"
   spec.add_development_dependency "rubocop-rspec", "~> 1.36.0"
 end
