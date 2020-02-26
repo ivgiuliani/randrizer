@@ -33,7 +33,7 @@ module Randrizer
             root_type = attrs["type"]
             value_type = gen_value_type(root_type, attrs)
 
-            unless required_keys.include?(key_type)
+            unless required_keys.include?(key)
               key_type = Types::Optional[inner_type: key_type]
             end
 
