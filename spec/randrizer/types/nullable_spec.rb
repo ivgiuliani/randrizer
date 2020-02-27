@@ -5,7 +5,7 @@ require "spec_helper"
 require "randrizer/types"
 
 RSpec.describe Randrizer::Types::Nullable do
-  subject { described_class[**params].eval }
+  subject { described_class.build(**params).eval }
 
   let(:null_prob) { 0.0 }
   let(:const_def) { Randrizer::Types::Const["yolo"] }

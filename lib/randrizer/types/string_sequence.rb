@@ -1,12 +1,10 @@
 # frozen_string_literal: true
 
-require "randrizer/types/type_builder"
+require "randrizer/types/base_type"
 
 module Randrizer
   module Types
-    class StringSequence
-      include TypeBuilder
-
+    class StringSequence < BaseType
       ALLOWED_TYPES = [
         Types::Int,
         Types::String,

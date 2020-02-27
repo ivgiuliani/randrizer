@@ -1,13 +1,11 @@
 # frozen_string_literal: true
 
 require "randrizer/types/skip"
-require "randrizer/types/type_builder"
+require "randrizer/types/base_type"
 
 module Randrizer
   module Types
-    class Dict
-      include TypeBuilder
-
+    class Dict < BaseType
       def initialize(keys_def)
         @keys_def = keys_def
       end
