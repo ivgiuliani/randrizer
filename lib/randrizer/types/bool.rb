@@ -4,6 +4,7 @@ require "randrizer/types/type_builder"
 
 module Randrizer
   module Types
+    # A boolean type. Can be either `true` or `false`.
     class Bool
       include TypeBuilder
 
