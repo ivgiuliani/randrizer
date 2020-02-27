@@ -10,7 +10,7 @@ AllCops:
     - vendor/**/*
     - bin/**/*
 
-Lint/UnneededCopDisableDirective:
+Lint/RedundantCopDisableDirective:
   Severity: error
 
 Lint/AmbiguousBlockAssociation:
@@ -32,7 +32,7 @@ Metrics/ClassLength:
 Metrics/MethodLength:
   Max: 58
 
-Metrics/LineLength:
+Layout/LineLength:
   Max: 90
   Exclude:
     - 'Gemfile'
@@ -59,10 +59,10 @@ Style/StringLiterals:
   Exclude:
     - Gemfile
 
-Layout/IndentFirstArrayElement:
+Layout/FirstArrayElementIndentation:
   EnforcedStyle: consistent
 
-Layout/IndentFirstHashElement:
+Layout/FirstHashElementIndentation:
   EnforcedStyle: consistent
 
 Style/YodaCondition:
@@ -96,7 +96,7 @@ RSpec/ContextWording:
     - for
     - and
 
-Naming/UncommunicativeMethodParamName:
+Naming/MethodParameterName:
   AllowedNames:
     # These are the default allowed names, set by Rubocop
     - io
