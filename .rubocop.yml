@@ -68,6 +68,15 @@ Layout/FirstHashElementIndentation:
 Style/YodaCondition:
   Enabled: true
 
+Style/HashEachMethods:
+  Enabled: true
+
+Style/HashTransformKeys:
+  Enabled: true
+
+Style/HashTransformValues:
+  Enabled: true
+
 RSpec/ExampleLength:
   Enabled: false
 
