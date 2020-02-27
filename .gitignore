@@ -2,10 +2,11 @@
 
 .data/
 .bundle/
+doc/
 log/
 tmp/
 .idea/
-
+.yardoc/
 .rspec_status
 
 .local_files
