@@ -4,17 +4,26 @@ references:
   install_bundle: &install_bundle
     run:
       name: Bundle
-      command: gem install bundler && bundle install --path vendor/bundle --jobs=4 --retry=3
+      command: gem install bundler -v 2.1.4 && bundle install --path vendor/bundle --jobs=4 --retry=3
 
   restore_bundle_cache: &restore_bundle_cache
     restore_cache:
-      key: randrizer-{{ checksum "randrizer.gemspec" }}-2.7.0
+      key: randrizer-{{ checksum "randrizer.gemspec" }}
 
   save_bundle_cache: &save_bundle_cache
     save_cache:
-      key: randrizer-{{ checksum "randrizer.gemspec" }}-2.7.0
+      key: randrizer-{{ checksum "randrizer.gemspec" }}
       paths:
         - vendor/bundle
+
+  steps: &steps
+    - checkout
+    - *install_bundle
+    - *restore_bundle_cache
+    - *save_bundle_cache
+    - run:
+        name: RSpec
+        command: bundle exec rspec --format progress --format RspecJunitFormatter -o tmp/rspec-reports/unit.xml $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
 
 jobs:
   code_quality:
@@ -29,21 +38,26 @@ jobs:
           name: Rubocop
           command: bundle exec rubocop
 
-  tests:
+  tests-r2.5:
+    docker:
+      - image: circleci/ruby:2.5.7
+    steps: *steps
+
+  tests-r2.6:
+    docker:
+      - image: circleci/ruby:2.6.5
+    steps: *steps
+
+  tests-r2.7:
     docker:
       - image: circleci/ruby:2.7.0
-    steps:
-      - checkout
-      - *restore_bundle_cache
-      - *install_bundle
-      - *save_bundle_cache
-      - run:
-          name: RSpec
-          command: bundle exec rspec --format progress --format RspecJunitFormatter -o tmp/rspec-reports/unit.xml $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
+    steps: *steps
 
 workflows:
   version: 2
   tests:
     jobs:
       - code_quality
-      - tests
+      - tests-r2.5
+      - tests-r2.6
+      - tests-r2.7
