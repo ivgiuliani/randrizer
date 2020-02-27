@@ -2,4 +2,3 @@
 
 require "randrizer/version"
 require "randrizer/types"
-require "randrizer/drivers/json_schema"

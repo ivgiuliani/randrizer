@@ -2,6 +2,7 @@
 
 require "randrizer/version"
 require "randrizer"
+require "randrizer/drivers/json_schema"
 
 module Randrizer
   class Cli
