@@ -2,6 +2,7 @@
 
 require "randrizer/types/skip"
 require "randrizer/types/base_type"
+require "randrizer/types/type_expansion"
 
 module Randrizer
   module Types
@@ -31,7 +32,7 @@ module Randrizer
       def eval
         return SKIP if rand > @presence_prob
 
-        @inner_type.eval
+        TypeExpansion.expand_for(@inner_type).eval
       end
     end
   end

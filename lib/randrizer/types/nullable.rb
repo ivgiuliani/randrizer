@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "randrizer/types/base_type"
+require "randrizer/types/type_expansion"
 
 module Randrizer
   module Types
@@ -28,7 +29,7 @@ module Randrizer
       def eval
         return nil if rand > (1.0 - @null_prob)
 
-        @inner_type.eval
+        TypeExpansion.expand_for(@inner_type).eval
       end
     end
   end

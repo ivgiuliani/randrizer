@@ -24,15 +24,15 @@ module Randrizer
             DAY_INT_TYPE
           ].freeze
 
-          TIMEZONE_SEQUENCE = Types::OneOf.build([
+          TIMEZONE_SEQUENCE = Types::OneOf.build(
             Types::Const["Z"],
-            Types::StringSequence.build([
-              Types::OneOf.build([Types::Const["+"], Types::Const["-"]]),
+            Types::StringSequence.build(
+              Types::OneOf.build(Types::Const["+"], Types::Const["-"]),
               HOUR_INT_TYPE,
               Types::Const[":"],
               MIN_SEC_INT_TYPE
-            ])
-          ])
+            )
+          )
 
           TIME_SEQUENCE = [
             HOUR_INT_TYPE,
@@ -81,17 +81,17 @@ module Randrizer
 
             case format
             when "date"
-              Types::StringSequence.build(DATE_SEQUENCE)
+              Types::StringSequence.build(*DATE_SEQUENCE)
             when "time"
-              Types::StringSequence.build(TIME_SEQUENCE)
+              Types::StringSequence.build(*TIME_SEQUENCE)
             when "date-time"
-              Types::StringSequence.build([
-                DATE_SEQUENCE,
+              Types::StringSequence.build(
+                *DATE_SEQUENCE,
                 Types::Const["T"],
-                TIME_SEQUENCE
-              ].flatten)
+                *TIME_SEQUENCE
+              )
             when "email"
-              Types::StringSequence.build(EMAIL_SEQUENCE)
+              Types::StringSequence.build(*EMAIL_SEQUENCE)
             else
               raise "Format not supported: #{format}"
             end

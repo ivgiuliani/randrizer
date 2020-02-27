@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "randrizer/types/base_type"
+require "randrizer/types/type_expansion"
 
 module Randrizer
   module Types
@@ -24,7 +25,7 @@ module Randrizer
       end
 
       def eval
-        @list_def.sample.eval
+        TypeExpansion.expand_for(@list_def.sample).eval
       end
 
       def length

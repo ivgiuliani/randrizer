@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+# Base class for all the types
+require "randrizer/types/base_type"
+
 # Primitive types. They should not depend on each other.
 require "randrizer/types/const"
 require "randrizer/types/bool"

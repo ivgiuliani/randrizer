@@ -4,22 +4,24 @@ Randrizer is a small library that allows consumers to generate random data
 for testing.
 
 ```ruby
-irb(main):001:0> definition = Randrizer::Types::Dict[{
-  Randrizer::Types::Const["hello"] => Randrizer::Types::String[],
-  Randrizer::Types::Const["world"] => Randrizer::Types::Int[min: 5, max: 10],
-  Randrizer::Types::Const["nested"] => Randrizer::Types::Dict[
-    {
-      Randrizer::Types::Const["nested1"] => Randrizer::Types::Float[],
-      Randrizer::Types::Optional[inner_type: Randrizer::Types::Const["nested2"]] =>
-        Randrizer::Types::Int[]
-    }
-  ]
-}]
+definition = {
+  "this is" => "a constant",
+  "but this should be a random positive number" => Randrizer::Types::Int[min: 1, max: 10],
+  "and we support nested objects" => {
+    "which can also be nested" => [
+      Randrizer::Types::String[min_length: 3, max_length: 4, valid_chars: "ABC"],
+      Randrizer::Types::Int[min: 0, max: 1000],
+      Randrizer::Types::OneOf.build("choice 1", "choice 2", "choice 3")
+    ]
+  }
+}
 
-irb(main):002:0> definition.eval
-=> {"hello"=>"XN3#tQd1%5#HWXI*p9zJD!tV^\\e%Wgais]vJQRNp$Z60FymI[=8~xy0IdVrmSb)me59zbqJjTbgZsv1NQA",
- "world"=>6,
- "nested"=>{"nested1"=>2274302953.724733}}
+Randrizer::Generator.generate(definition)
+```
+```ruby
+=> {"this is"=>"a constant",
+ "but this should be a random positive number"=>7,
+ "and we support nested objects"=>{"which can also be nested"=>["BBB", 828, "choice 2"]}}
 ```
 
 ## Use cases

@@ -5,7 +5,7 @@ require "spec_helper"
 require "randrizer/types"
 
 RSpec.describe Randrizer::Types::StringSequence do
-  let(:instance) { described_class[params] }
+  let(:instance) { described_class[*params] }
 
   let(:string_def) { Randrizer::Types::String[min_length: 4, max_length: 10] }
   let(:int_def) { Randrizer::Types::Int[min: 4, max: 10] }
@@ -54,6 +54,15 @@ RSpec.describe Randrizer::Types::StringSequence do
           is_expected.to be_an_instance_of(String)
           expect(subject).to include("optional")
         end
+      end
+    end
+
+    context "when the sequence types need to be expanded" do
+      let(:params) { [int_def, "a constant"] }
+
+      it "expands the types correctly" do
+        is_expected.to be_an_instance_of(String)
+        expect(subject).to include("a constant")
       end
     end
   end
