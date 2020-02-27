@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
+require "randrizer/types/base_type"
+
 module Randrizer
   module Types
-    class Skip
+    class Skip < BaseType
       def ==(other)
         other.class == Skip
       end

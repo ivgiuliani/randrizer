@@ -1,13 +1,11 @@
 # frozen_string_literal: true
 
-require "randrizer/types/type_builder"
+require "randrizer/types/base_type"
 
 module Randrizer
   module Types
     # A boolean type. Can be either `true` or `false`.
-    class Bool
-      include TypeBuilder
-
+    class Bool < BaseType
       PRESENCE_MAYBE = 0.5
 
       def initialize(true_prob: PRESENCE_MAYBE)

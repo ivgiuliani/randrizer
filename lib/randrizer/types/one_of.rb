@@ -1,12 +1,10 @@
 # frozen_string_literal: true
 
-require "randrizer/types/type_builder"
+require "randrizer/types/base_type"
 
 module Randrizer
   module Types
-    class OneOf
-      include TypeBuilder
-
+    class OneOf < BaseType
       def initialize(list_def)
         @list_def = list_def
       end

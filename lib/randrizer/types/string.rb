@@ -1,12 +1,10 @@
 # frozen_string_literal: true
 
-require "randrizer/types/type_builder"
+require "randrizer/types/base_type"
 
 module Randrizer
   module Types
-    class String
-      include TypeBuilder
-
+    class String < BaseType
       CHARS_NUMBERS = "0123456789"
       CHARS_SYMBOLS = " !\"£$%^&()=-*/[]#\\~"
       CHARS_LOWERCASE_LETTERS = "abcdfeghijklmnopqrstuvwxyz"

@@ -1,12 +1,10 @@
 # frozen_string_literal: true
 
-require "randrizer/types/type_builder"
+require "randrizer/types/base_type"
 
 module Randrizer
   module Types
-    class Nullable
-      include TypeBuilder
-
+    class Nullable < BaseType
       def initialize(null_prob:, inner_type:)
         @null_prob = null_prob
         @inner_type = inner_type

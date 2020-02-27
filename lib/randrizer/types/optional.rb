@@ -1,13 +1,11 @@
 # frozen_string_literal: true
 
 require "randrizer/types/skip"
-require "randrizer/types/type_builder"
+require "randrizer/types/base_type"
 
 module Randrizer
   module Types
-    class Optional
-      include TypeBuilder
-
+    class Optional < BaseType
       PRESENCE_MAYBE = 0.5
 
       def initialize(inner_type:, presence_prob: PRESENCE_MAYBE)

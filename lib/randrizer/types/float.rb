@@ -1,12 +1,10 @@
 # frozen_string_literal: true
 
-require "randrizer/types/type_builder"
+require "randrizer/types/base_type"
 
 module Randrizer
   module Types
-    class Float
-      include TypeBuilder
-
+    class Float < BaseType
       DEFAULT_MIN = 0.0
       DEFAULT_MAX = 9_999_999_999.0
 
