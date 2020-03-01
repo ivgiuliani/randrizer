@@ -6,7 +6,7 @@ require "randrizer/types/base_type"
 module Randrizer
   module Types
     class Dict < BaseType
-      def initialize(keys_def)
+      def initialize(**keys_def)
         @keys_def = keys_def
       end
 

@@ -28,11 +28,9 @@ RSpec.describe Randrizer::Generator do
     context "when given a dict as root" do
       let(:input) do
         Randrizer::Types::Dict[
-          {
-            Randrizer::Types::Const["hello"] => string_def,
-            Randrizer::Types::Const["world"] => int_def,
-            Randrizer::Types::Const["!"] => float_def
-          }
+          Randrizer::Types::Const["hello"] => string_def,
+          Randrizer::Types::Const["world"] => int_def,
+          Randrizer::Types::Const["!"] => float_def
         ]
       end
 
