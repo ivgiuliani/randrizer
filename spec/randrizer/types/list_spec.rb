@@ -5,7 +5,7 @@ require "spec_helper"
 require "randrizer/types"
 
 RSpec.describe Randrizer::Types::List do
-  let(:instance) { described_class[params] }
+  let(:instance) { described_class[*params] }
 
   let(:string_def) { Randrizer::Types::String[min_length: 4, max_length: 10] }
   let(:int_def) { Randrizer::Types::Int[min: 4, max: 10] }

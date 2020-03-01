@@ -6,8 +6,8 @@ require "randrizer/types/base_type"
 module Randrizer
   module Types
     class List < BaseType
-      def initialize(list_def)
-        @list_def = list_def
+      def initialize(*args)
+        @list_def = args
       end
 
       def validate!
