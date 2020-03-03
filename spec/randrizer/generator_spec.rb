@@ -86,11 +86,11 @@ RSpec.describe Randrizer::Generator do
 
     context "when given a list as root" do
       let(:input) do
-        Randrizer::Types::List[[
+        Randrizer::Types::List[
           string_def,
           int_def,
           float_def
-        ]]
+        ]
       end
 
       it "generates a structure matching the input" do
