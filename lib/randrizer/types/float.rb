@@ -4,11 +4,21 @@ require "randrizer/types/base_type"
 
 module Randrizer
   module Types
-    class Float < BaseType
+    class Float
+      include BaseType
+
       DEFAULT_MIN = 0.0
       DEFAULT_MAX = 9_999_999_999.0
 
-      def initialize(min: DEFAULT_MIN, max: DEFAULT_MAX)
+      class << self
+        def build(min: DEFAULT_MIN, max: DEFAULT_MAX)
+          new(min: min, max: max)
+        end
+
+        alias [] build
+      end
+
+      def initialize(min:, max:)
         @min = min
         @max = max
       end

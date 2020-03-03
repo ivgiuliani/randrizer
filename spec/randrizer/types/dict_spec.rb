@@ -17,6 +17,10 @@ RSpec.describe Randrizer::Types::Dict do
     }
   end
 
+  it {
+    expect(described_class.build(params)).to be_a_kind_of(Randrizer::Types::BaseType)
+  }
+
   describe "#eval" do
     subject { instance.eval }
 

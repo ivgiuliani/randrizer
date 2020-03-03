@@ -13,6 +13,10 @@ RSpec.describe Randrizer::Types::OneOf do
 
   let(:params) { [const_def1, const_def2, const_def3] }
 
+  it {
+    expect(described_class.build(*params)).to be_a_kind_of(Randrizer::Types::BaseType)
+  }
+
   describe "#eval" do
     subject { described_class[params].eval }
 

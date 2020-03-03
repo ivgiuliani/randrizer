@@ -5,7 +5,7 @@ require "spec_helper"
 require "randrizer/types/float"
 
 RSpec.describe Randrizer::Types::Float do
-  subject { described_class[**params].eval }
+  subject { described_class.build(**params).eval }
 
   let(:min) { 0.1 }
   let(:max) { 3.1 }
@@ -16,6 +16,10 @@ RSpec.describe Randrizer::Types::Float do
       max: max
     }
   end
+
+  it {
+    expect(described_class.build(**params)).to be_a_kind_of(Randrizer::Types::BaseType)
+  }
 
   describe "#eval" do
     context "with a basic case" do

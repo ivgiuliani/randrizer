@@ -4,7 +4,17 @@ require "randrizer/types/base_type"
 
 module Randrizer
   module Types
-    class Nullable < BaseType
+    class Nullable
+      include BaseType
+
+      class << self
+        def build(null_prob:, inner_type:)
+          new(null_prob: null_prob, inner_type: inner_type)
+        end
+
+        alias [] build
+      end
+
       def initialize(null_prob:, inner_type:)
         @null_prob = null_prob
         @inner_type = inner_type

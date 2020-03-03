@@ -6,6 +6,8 @@ require "randrizer/types/bool"
 require "randrizer/types/int"
 require "randrizer/types/float"
 require "randrizer/types/string"
+
+# Wrapper types. Once evaluated, they evaluate to a primitive type.
 require "randrizer/types/one_of"
 require "randrizer/types/skip"
 require "randrizer/types/optional"

@@ -10,6 +10,10 @@ RSpec.describe Randrizer::Types::Const do
 
   let(:params) { 1 }
 
+  it {
+    expect(described_class.build(params)).to be_a_kind_of(Randrizer::Types::BaseType)
+  }
+
   describe "#eval" do
     it { is_expected.to eq(params) }
 

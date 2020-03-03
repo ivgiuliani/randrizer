@@ -5,7 +5,7 @@ require "spec_helper"
 require "randrizer/types/int"
 
 RSpec.describe Randrizer::Types::Int do
-  subject { described_class[**params].eval }
+  subject { described_class.build(**params).eval }
 
   let(:min) { 0 }
   let(:max) { 3 }
@@ -16,6 +16,10 @@ RSpec.describe Randrizer::Types::Int do
       max: max
     }
   end
+
+  it {
+    expect(described_class.build(**params)).to be_a_kind_of(Randrizer::Types::BaseType)
+  }
 
   describe "#eval" do
     context "with a basic case" do

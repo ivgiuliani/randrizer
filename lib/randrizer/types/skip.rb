@@ -4,7 +4,17 @@ require "randrizer/types/base_type"
 
 module Randrizer
   module Types
-    class Skip < BaseType
+    class Skip
+      include BaseType
+
+      class << self
+        def build
+          new
+        end
+
+        alias [] build
+      end
+
       def ==(other)
         other.class == Skip
       end

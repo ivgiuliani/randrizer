@@ -5,7 +5,7 @@ require "spec_helper"
 require "randrizer/types/string"
 
 RSpec.describe Randrizer::Types::String do
-  subject { described_class[**params].eval }
+  subject { described_class.build(**params).eval }
 
   let(:min_length) { 0 }
   let(:max_length) { 5 }
@@ -18,6 +18,10 @@ RSpec.describe Randrizer::Types::String do
       valid_chars: valid_chars
     }
   end
+
+  it {
+    expect(described_class.build(**params)).to be_a_kind_of(Randrizer::Types::BaseType)
+  }
 
   describe "#eval" do
     context "with a basic case" do

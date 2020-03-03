@@ -5,10 +5,20 @@ require "randrizer/types/base_type"
 
 module Randrizer
   module Types
-    class Optional < BaseType
+    class Optional
+      include BaseType
+
       PRESENCE_MAYBE = 0.5
 
-      def initialize(inner_type:, presence_prob: PRESENCE_MAYBE)
+      class << self
+        def build(inner_type:, presence_prob: PRESENCE_MAYBE)
+          new(inner_type: inner_type, presence_prob: presence_prob)
+        end
+
+        alias [] build
+      end
+
+      def initialize(inner_type:, presence_prob:)
         @inner_type = inner_type
         @presence_prob = presence_prob
       end

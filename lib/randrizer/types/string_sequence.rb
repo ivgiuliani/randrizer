@@ -4,7 +4,9 @@ require "randrizer/types/base_type"
 
 module Randrizer
   module Types
-    class StringSequence < BaseType
+    class StringSequence
+      include BaseType
+
       ALLOWED_TYPES = [
         Types::Int,
         Types::String,
@@ -13,6 +15,14 @@ module Randrizer
         Types::Optional,
         Types::OneOf
       ].freeze
+
+      class << self
+        def build(sequence_def)
+          new(sequence_def)
+        end
+
+        alias [] build
+      end
 
       def initialize(sequence_def)
         @sequence_def = sequence_def

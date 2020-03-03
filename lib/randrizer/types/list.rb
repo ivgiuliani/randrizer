@@ -5,7 +5,17 @@ require "randrizer/types/base_type"
 
 module Randrizer
   module Types
-    class List < BaseType
+    class List
+      include BaseType
+
+      class << self
+        def build(*args)
+          new(*args)
+        end
+
+        alias [] build
+      end
+
       def initialize(*args)
         @list_def = args
       end

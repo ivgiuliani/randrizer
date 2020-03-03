@@ -17,6 +17,10 @@ RSpec.describe Randrizer::Types::Nullable do
     }
   end
 
+  it {
+    expect(described_class.build(**params)).to be_a_kind_of(Randrizer::Types::BaseType)
+  }
+
   describe "#eval" do
     context "when the inner type can't be null" do
       let(:null_prob) { 0.0 }
