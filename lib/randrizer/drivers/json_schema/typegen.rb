@@ -8,13 +8,13 @@ module Randrizer
       class Typegen
         class << self
           MONTH_INT_TYPE =
-            Types::OneOf[(1..12).map { |i| Types::Const.build(i.to_s.rjust(2, "0")) }]
+            Types::OneOf[*((1..12).map { |i| Types::Const.build(i.to_s.rjust(2, "0")) })]
           DAY_INT_TYPE =
-            Types::OneOf[(1..31).map { |i| Types::Const.build(i.to_s.rjust(2, "0")) }]
+            Types::OneOf[*((1..31).map { |i| Types::Const.build(i.to_s.rjust(2, "0")) })]
           HOUR_INT_TYPE =
-            Types::OneOf[(0..23).map { |i| Types::Const.build(i.to_s.rjust(2, "0")) }]
+            Types::OneOf[*((0..23).map { |i| Types::Const.build(i.to_s.rjust(2, "0")) })]
           MIN_SEC_INT_TYPE =
-            Types::OneOf[(0..59).map { |i| Types::Const.build(i.to_s.rjust(2, "0")) }]
+            Types::OneOf[*((0..59).map { |i| Types::Const.build(i.to_s.rjust(2, "0")) })]
 
           DATE_SEQUENCE = [
             Types::Int.build(min: 1970, max: 2200),
@@ -102,7 +102,7 @@ module Randrizer
 
             if attrs.include?("enum")
               return Types::OneOf[
-                attrs["enum"].map { |e| Types::Const[e] }
+                *attrs["enum"].map { |e| Types::Const[e] }
               ]
             end
 

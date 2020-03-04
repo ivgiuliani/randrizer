@@ -60,7 +60,7 @@ module Randrizer
           when "null"
             Typegen.t_null(attrs)
           when Array
-            Types::OneOf.build(type.map { |sub_t| gen_value_type(sub_t, attrs) })
+            Types::OneOf.build(*type.map { |sub_t| gen_value_type(sub_t, attrs) })
           else
             raise "Unsupported type: #{type}"
           end

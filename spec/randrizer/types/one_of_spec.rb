@@ -5,7 +5,7 @@ require "spec_helper"
 require "randrizer/types"
 
 RSpec.describe Randrizer::Types::OneOf do
-  let(:instance) { described_class[params] }
+  let(:instance) { described_class[*params] }
 
   let(:const_def1) { Randrizer::Types::Const["hello"] }
   let(:const_def2) { Randrizer::Types::Const["yolo"] }
@@ -18,7 +18,7 @@ RSpec.describe Randrizer::Types::OneOf do
   }
 
   describe "#eval" do
-    subject { described_class[params].eval }
+    subject { described_class[*params].eval }
 
     it "returns one of the input items" do
       expect(subject).to be_an_instance_of(String)
