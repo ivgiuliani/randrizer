@@ -37,10 +37,8 @@ RSpec.describe Randrizer::Types::Dict do
           Randrizer::Types::Const["hello"] => string_def,
           Randrizer::Types::Const["world"] => int_def,
           Randrizer::Types::Const["nested"] => described_class[
-            {
-              Randrizer::Types::Const["nested1"] => string_def,
-              Randrizer::Types::Const["nested2"] => int_def
-            }
+            Randrizer::Types::Const["nested1"] => string_def,
+            Randrizer::Types::Const["nested2"] => int_def
           ]
         }
       end
@@ -53,20 +51,6 @@ RSpec.describe Randrizer::Types::Dict do
       it { expect(subject["nested"].keys).to match_array(%w[nested1 nested2]) }
     end
 
-    context "when the params are given as a list" do
-      let(:params) do
-        [
-          [Randrizer::Types::Const["hello"], string_def],
-          [Randrizer::Types::Const["world"], int_def]
-        ]
-      end
-
-      it { is_expected.to be_an_instance_of(Hash) }
-      it { expect(subject.keys).to match_array(%w[hello world]) }
-      it { expect(subject["hello"]).to match(/[A-z0-9]+/) }
-      it { expect(subject["world"]).to be >= 4 }
-    end
-
     context "when there's an optional item" do
       let(:opt_string) do
         Randrizer::Types::Optional[
@@ -74,11 +58,11 @@ RSpec.describe Randrizer::Types::Dict do
           inner_type: Randrizer::Types::Const["optional"]]
       end
       let(:params) do
-        [
-          [Randrizer::Types::Const["hello"], string_def],
-          [opt_string, Randrizer::Types::Const["yolo"]],
-          [Randrizer::Types::Const["world"], int_def]
-        ]
+        {
+          Randrizer::Types::Const["hello"] => string_def,
+          opt_string => Randrizer::Types::Const["yolo"],
+          Randrizer::Types::Const["world"] => int_def
+        }
       end
 
       context "and the optional item should be skipped" do

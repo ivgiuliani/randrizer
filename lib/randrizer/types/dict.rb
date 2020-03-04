@@ -9,6 +9,7 @@ module Randrizer
       include BaseType
 
       class << self
+        # @param [Hash{BaseType => BaseType}] keys_def
         def build(keys_def)
           new(keys_def)
         end

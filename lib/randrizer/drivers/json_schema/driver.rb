@@ -25,7 +25,7 @@ module Randrizer
         end
 
         def type_tree
-          dict_items = []
+          dict_items = {}
 
           required_keys = json.fetch("required", [])
           json.fetch("properties", []).map do |key, attrs|
@@ -37,10 +37,10 @@ module Randrizer
               key_type = Types::Optional[inner_type: key_type]
             end
 
-            dict_items.append([key_type, value_type])
+            dict_items[key_type] = value_type
           end
 
-          Types::Dict[dict_items]
+          Types::Dict.build(dict_items)
         end
 
         private
