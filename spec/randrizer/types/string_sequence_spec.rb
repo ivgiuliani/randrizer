@@ -13,6 +13,10 @@ RSpec.describe Randrizer::Types::StringSequence do
 
   let(:params) { [string_def, int_def, const_def] }
 
+  it {
+    expect(described_class.build(params)).to be_a_kind_of(Randrizer::Types::BaseType)
+  }
+
   describe "#eval" do
     subject { instance.eval }
 

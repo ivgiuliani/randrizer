@@ -5,10 +5,20 @@ require "randrizer/types/base_type"
 module Randrizer
   module Types
     # A boolean type. Can be either `true` or `false`.
-    class Bool < BaseType
+    class Bool
+      include BaseType
+
       PRESENCE_MAYBE = 0.5
 
-      def initialize(true_prob: PRESENCE_MAYBE)
+      class << self
+        def build(true_prob: PRESENCE_MAYBE)
+          new(true_prob: true_prob)
+        end
+
+        alias [] build
+      end
+
+      def initialize(true_prob:)
         @true_prob = true_prob
       end
 

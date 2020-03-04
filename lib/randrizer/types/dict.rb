@@ -5,7 +5,18 @@ require "randrizer/types/base_type"
 
 module Randrizer
   module Types
-    class Dict < BaseType
+    class Dict
+      include BaseType
+
+      class << self
+        # @param [Hash{BaseType => BaseType}] keys_def
+        def build(keys_def)
+          new(keys_def)
+        end
+
+        alias [] build
+      end
+
       def initialize(keys_def)
         @keys_def = keys_def
       end

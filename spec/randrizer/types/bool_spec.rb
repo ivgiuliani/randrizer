@@ -5,7 +5,7 @@ require "spec_helper"
 require "randrizer/types"
 
 RSpec.describe Randrizer::Types::Bool do
-  subject { described_class[**params].eval }
+  subject { described_class.build(**params).eval }
 
   let(:true_prob) { 0.0 }
 
@@ -14,6 +14,10 @@ RSpec.describe Randrizer::Types::Bool do
       true_prob: true_prob
     }
   end
+
+  it {
+    expect(described_class.build(**params)).to be_a_kind_of(Randrizer::Types::BaseType)
+  }
 
   describe "#eval" do
     context "when it should always return true" do

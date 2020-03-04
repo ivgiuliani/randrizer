@@ -4,7 +4,9 @@ require "randrizer/types/base_type"
 
 module Randrizer
   module Types
-    class String < BaseType
+    class String
+      include BaseType
+
       CHARS_NUMBERS = "0123456789"
       CHARS_SYMBOLS = " !\"£$%^&()=-*/[]#\\~"
       CHARS_LOWERCASE_LETTERS = "abcdfeghijklmnopqrstuvwxyz"
@@ -19,9 +21,19 @@ module Randrizer
       DEFAULT_MIN_LENGTH = 0
       DEFAULT_MAX_LENGTH = 99
 
-      def initialize(min_length: DEFAULT_MIN_LENGTH,
-                     max_length: DEFAULT_MAX_LENGTH,
-                     valid_chars: DEFAULT_VALID_CHARS)
+      class << self
+        def build(min_length: DEFAULT_MIN_LENGTH,
+                  max_length: DEFAULT_MAX_LENGTH,
+                  valid_chars: DEFAULT_VALID_CHARS)
+          new(min_length: min_length,
+              max_length: max_length,
+              valid_chars: valid_chars)
+        end
+
+        alias [] build
+      end
+
+      def initialize(min_length:, max_length:, valid_chars:)
         @min_length = min_length
         @max_length = max_length
         @valid_chars = valid_chars

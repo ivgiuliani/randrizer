@@ -4,15 +4,15 @@ require "spec_helper"
 
 require "randrizer/types"
 
-RSpec.describe Randrizer::Types::Nullable do
+RSpec.describe Randrizer::Types::Optional do
   subject { described_class.build(**params).eval }
 
-  let(:null_prob) { 0.0 }
+  let(:presence_prob) { 0.0 }
   let(:const_def) { Randrizer::Types::Const["yolo"] }
 
   let(:params) do
     {
-      null_prob: null_prob,
+      presence_prob: presence_prob,
       inner_type: const_def
     }
   end
@@ -22,16 +22,16 @@ RSpec.describe Randrizer::Types::Nullable do
   }
 
   describe "#eval" do
-    context "when the inner type can't be null" do
-      let(:null_prob) { 0.0 }
+    context "when the inner type should be skipped" do
+      let(:presence_prob) { 0.0 }
 
-      it { is_expected.to eq("yolo") }
+      it { is_expected.to eq(Randrizer::Types::SKIP) }
     end
 
-    context "when the inner type should always be null" do
-      let(:null_prob) { 1.0 }
+    context "when the inner type should always be present" do
+      let(:presence_prob) { 1.0 }
 
-      it { is_expected.to be_nil }
+      it { is_expected.to eq("yolo") }
     end
   end
 end

@@ -4,8 +4,18 @@ require "randrizer/types/base_type"
 
 module Randrizer
   module Types
-    class OneOf < BaseType
-      def initialize(list_def)
+    class OneOf
+      include BaseType
+
+      class << self
+        def build(*list_def)
+          new(*list_def)
+        end
+
+        alias [] build
+      end
+
+      def initialize(*list_def)
         @list_def = list_def
       end
 
