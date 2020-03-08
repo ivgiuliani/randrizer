@@ -32,6 +32,19 @@ Randrizer::Generator.generate(definition)
   measure throughput and performance
 * Anonymisation: replace your production data with random values 
 
+## Installation
+
+**Randrizer**'s installation is pretty standard:
+
+```sh
+$ gem install randrizer
+```
+
+If you'd rather install randrizer using `bundler`, add a line for it in your `Gemfile`:
+```rb
+gem 'randrizer', require: false
+```
+
 ## Drivers
 
 Currently there's a single driver out of the box for simple JSON schema files.
