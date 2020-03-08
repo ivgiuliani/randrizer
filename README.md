@@ -42,7 +42,7 @@ $ gem install randrizer
 
 If you'd rather install randrizer using `bundler`, add a line for it in your `Gemfile`:
 ```rb
-gem 'randrizer', require: false
+gem 'randrizer'
 ```
 
 ## Drivers
