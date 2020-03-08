@@ -17,29 +17,40 @@ module Randrizer
       ].freeze
 
       class << self
-        def build(sequence_def)
-          new(sequence_def)
+        def build(*sequence_def)
+          new(*sequence_def)
         end
 
         alias [] build
       end
 
-      def initialize(sequence_def)
+      def initialize(*sequence_def)
         @sequence_def = sequence_def
       end
 
       def validate!
-        disallowed = @sequence_def.reject { |item| ALLOWED_TYPES.include?(item.class) }
+        disallowed = expanded_sequence
+                     .reject { |item| ALLOWED_TYPES.include?(item.class) }
 
         raise ValidationError("types not allowed in a string sequence: #{disallowed}")
       end
 
       def eval
-        @sequence_def.map(&:eval).reject { |evaluated| evaluated == SKIP }.compact.join
+        expanded_sequence
+          .map(&:eval)
+          .reject { |evaluated| evaluated == SKIP }
+          .compact
+          .join
       end
 
       def empty?
-        @sequence_def.empty?
+        expanded_sequence.empty?
+      end
+
+      private
+
+      def expanded_sequence
+        @expanded_sequence ||= @sequence_def.map { |t| TypeExpansion.expand_for(t) }
       end
     end
   end

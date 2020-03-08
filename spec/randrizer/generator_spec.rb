@@ -122,5 +122,33 @@ RSpec.describe Randrizer::Generator do
         it { expect(described_class.generate(input)).to eq("yolo") }
       end
     end
+
+    context "when type expansion is required" do
+      let(:partial_type_tree) do
+        {
+          "string 1" => "constant 1",
+          "string 2" => "constant 2",
+          "number 1" => 1234,
+          "inner" => {
+            "hello" => "world",
+            "random" => Randrizer::Types::Int[]
+          }
+        }
+      end
+
+      it "expands the type tree keeping the constants" do
+        output = described_class.generate(partial_type_tree)
+
+        expect(output).to match({
+          "string 1" => "constant 1",
+          "string 2" => "constant 2",
+          "number 1" => 1234,
+          "inner" => {
+            "hello" => "world",
+            "random" => an_instance_of(Integer)
+          }
+        })
+      end
+    end
   end
 end

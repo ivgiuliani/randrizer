@@ -25,7 +25,9 @@ module Randrizer
       end
 
       def eval
-        @list_def.map(&:eval).reject { |evaluated| evaluated == SKIP }
+        @list_def.map { |item| TypeExpansion.expand_for(item).eval }.reject do |evaluated|
+          evaluated == SKIP
+        end
       end
 
       def empty?

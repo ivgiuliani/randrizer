@@ -4,6 +4,7 @@ require "randrizer/types/base_type"
 
 module Randrizer
   module Types
+    # Special type to be skipped when encountered by iterable types.
     class Skip
       include BaseType
 
