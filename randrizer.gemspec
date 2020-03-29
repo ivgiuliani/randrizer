@@ -27,7 +27,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "ruby2_keywords", "~> 0.0.2"
 
   spec.add_development_dependency "bundler", "~> 2.0"
-  spec.add_development_dependency "pry-byebug", "~> 3.8.0"
+  spec.add_development_dependency "pry-byebug", "~> 3.9.0"
   spec.add_development_dependency "rake", "~> 13.0"
   spec.add_development_dependency "redcarpet", "~> 3.5.0"
   spec.add_development_dependency "rspec", "~> 3.0"
