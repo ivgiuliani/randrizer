@@ -32,6 +32,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "redcarpet", "~> 3.5.0"
   spec.add_development_dependency "rspec", "~> 3.0"
   spec.add_development_dependency "rspec_junit_formatter", "0.4.1"
-  spec.add_development_dependency "rubocop", "~> 0.83.0"
+  spec.add_development_dependency "rubocop", "~> 0.84.0"
   spec.add_development_dependency "rubocop-rspec", "~> 1.39.0"
 end
