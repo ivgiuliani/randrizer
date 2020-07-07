@@ -110,6 +110,9 @@ Style/BisectedAttrAccessor:
 Style/RedundantAssignment:
   Enabled: true
 
+Style/RedundantFetchBlock:
+  Enabled: true
+
 RSpec/ExampleLength:
   Enabled: false
 
