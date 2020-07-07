@@ -20,6 +20,9 @@ Lint/AmbiguousBlockAssociation:
 Lint/DeprecatedOpenSSLConstant:
   Enabled: true
 
+Lint/StructNewOverride:
+  Enabled: true
+
 Metrics/AbcSize:
   Max: 59
 
