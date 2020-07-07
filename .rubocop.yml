@@ -107,6 +107,9 @@ Style/AccessorGrouping:
 Style/BisectedAttrAccessor:
   Enabled: true
 
+Style/RedundantAssignment:
+  Enabled: true
+
 RSpec/ExampleLength:
   Enabled: false
 
