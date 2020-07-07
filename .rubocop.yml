@@ -95,6 +95,9 @@ Style/HashTransformKeys:
 Style/HashTransformValues:
   Enabled: true
 
+Style/SlicingWithRange:
+  Enabled: true
+
 RSpec/ExampleLength:
   Enabled: false
 
