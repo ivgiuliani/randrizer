@@ -101,6 +101,9 @@ Style/SlicingWithRange:
 Style/ExponentialNotation:
   Enabled: true
 
+Style/AccessorGrouping:
+  Enabled: false
+
 RSpec/ExampleLength:
   Enabled: false
 
