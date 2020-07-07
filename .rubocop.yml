@@ -23,6 +23,9 @@ Lint/DeprecatedOpenSSLConstant:
 Lint/StructNewOverride:
   Enabled: true
 
+Lint/MixedRegexpCaptureTypes:
+  Enabled: true
+
 Metrics/AbcSize:
   Max: 59
 
