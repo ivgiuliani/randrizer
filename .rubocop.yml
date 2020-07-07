@@ -98,6 +98,9 @@ Style/HashTransformValues:
 Style/SlicingWithRange:
   Enabled: true
 
+Style/ExponentialNotation:
+  Enabled: true
+
 RSpec/ExampleLength:
   Enabled: false
 
