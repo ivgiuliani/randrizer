@@ -116,6 +116,9 @@ Style/RedundantFetchBlock:
 Style/RedundantRegexpCharacterClass:
   Enabled: true
 
+Style/RedundantRegexpEscape:
+  Enabled: true
+
 RSpec/ExampleLength:
   Enabled: false
 
