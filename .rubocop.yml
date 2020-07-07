@@ -17,6 +17,9 @@ Lint/AmbiguousBlockAssociation:
   Exclude:
     - "spec/**/*"
 
+Lint/DeprecatedOpenSSLConstant:
+  Enabled: true
+
 Metrics/AbcSize:
   Max: 59
 
