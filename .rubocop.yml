@@ -113,6 +113,9 @@ Style/RedundantAssignment:
 Style/RedundantFetchBlock:
   Enabled: true
 
+Style/RedundantRegexpCharacterClass:
+  Enabled: true
+
 RSpec/ExampleLength:
   Enabled: false
 
