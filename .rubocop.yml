@@ -37,6 +37,9 @@ Layout/LineLength:
   Exclude:
     - 'Gemfile'
 
+Layout/EmptyLinesAroundAttributeAccessor:
+  Enabled: true
+
 Metrics/BlockLength:
   Enabled: false
 
