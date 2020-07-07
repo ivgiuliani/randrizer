@@ -104,6 +104,9 @@ Style/ExponentialNotation:
 Style/AccessorGrouping:
   Enabled: false
 
+Style/BisectedAttrAccessor:
+  Enabled: true
+
 RSpec/ExampleLength:
   Enabled: false
 
