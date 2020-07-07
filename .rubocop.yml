@@ -26,6 +26,9 @@ Lint/StructNewOverride:
 Lint/MixedRegexpCaptureTypes:
   Enabled: true
 
+Lint/RaiseException:
+  Enabled: true
+
 Metrics/AbcSize:
   Max: 59
 
