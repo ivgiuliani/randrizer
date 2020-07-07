@@ -28,7 +28,7 @@ references:
 jobs:
   code_quality:
     docker:
-      - image: circleci/ruby:2.7.0
+      - image: circleci/ruby:2.7.1
     steps:
       - checkout
       - *restore_bundle_cache
