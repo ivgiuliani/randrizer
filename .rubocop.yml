@@ -1,7 +1,7 @@
 require: rubocop-rspec
 
 AllCops:
-  TargetRubyVersion: 2.7.0
+  TargetRubyVersion: 2.5.0
   DisplayCopNames: true
   DisplayStyleGuide: true
   ExtraDetails: true
