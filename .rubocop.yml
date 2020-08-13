@@ -177,7 +177,7 @@ Style/SingleArgumentDig:
   Enabled: true
 
 Style/StringConcatenation:
-  Enabled: true
+  Enabled: false
 
 RSpec/ExampleLength:
   Enabled: false
