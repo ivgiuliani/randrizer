@@ -21,7 +21,7 @@ module Randrizer
     end
 
     def self.help
-      STDOUT.write("Randrizer #{Randrizer::VERSION}\n")
+      $stdout.write("Randrizer #{Randrizer::VERSION}\n")
     end
   end
 end

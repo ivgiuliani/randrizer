@@ -23,6 +23,7 @@ Gem::Specification.new do |spec|
   spec.bindir        = "exe"
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
+  spec.required_ruby_version = ">= 2.5"
 
   spec.add_dependency "ruby2_keywords", "~> 0.0.2"
 
@@ -32,6 +33,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "redcarpet", "~> 3.5.0"
   spec.add_development_dependency "rspec", "~> 3.0"
   spec.add_development_dependency "rspec_junit_formatter", "0.4.1"
-  spec.add_development_dependency "rubocop", "~> 0.87.0"
+  spec.add_development_dependency "rubocop", "~> 0.89.1"
   spec.add_development_dependency "rubocop-rspec", "~> 1.42.0"
 end
