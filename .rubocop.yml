@@ -207,6 +207,9 @@ RSpec/ContextWording:
     - for
     - and
 
+RSpec/MultipleMemoizedHelpers:
+  Max: 15
+
 Naming/MethodParameterName:
   AllowedNames:
     # These are the default allowed names, set by Rubocop
